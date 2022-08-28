@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "json-beautify": "^1.1.1",
+    "puppeteer": "^16.2.0"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
+  },
+  "name": "fbbot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Prashant Joshi",
+  "license": "MIT",
+  "description": ""
+}
