@@ -19,13 +19,13 @@ const [liveUrl, deleteCookiesFlag, userEmail] = userInputArr;
 const errObj = {};
 let errCount = 0;
 
-deleteCookiesFlag ? userEmail.length ? cookiesHelper.deleteAllCookies() : cookiesHelper.deleteUserCookies(userEmail) : null;
+deleteCookiesFlag ? !userEmail.length ? cookiesHelper.deleteAllCookies() : cookiesHelper.deleteUserCookies(userEmail) : null;
 
 const delay = async (page, time) => {
   await page.waitForTimeout(time);
 };
 try {
-  liveUrl.length || deleteCookiesFlag ? (async () => {
+  liveUrl.length && !deleteCookiesFlag ? (async () => {
     for (let it = 0; it < credentials.length; it++) {
       const { u: userName, p: password } = credentials[it];// id pass
       if (!userName || !password) continue;
@@ -60,7 +60,7 @@ try {
         await page.click('#loginbutton');
 
         await page.waitForNavigation({ waitUntil: 'networkidle0' });
-        delay(page, 50);
+        await delay(page, 50);
         await page.goto(liveUrl, { waitUntil: 'networkidle0' });
         await delay(page, 3000);
         await page.$eval('video', (video) => video.play());
